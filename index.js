@@ -31,7 +31,7 @@ const url = `https://quotes.toscrape.com/`
         quote: e.querySelector('.text').innerText.trim(),
         author: e.querySelector('.author').innerText.trim()
     })))
-    console.log('Scraping completed');
+    console.log('Scraping complete');
 
     fs.writeFile('files/quotes.json', JSON.stringify(content), (error) => {
         if(error) throw error
