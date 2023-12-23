@@ -1,0 +1,1 @@
+#### Bypassing authentication and scraping the page using `Puppeteer`
