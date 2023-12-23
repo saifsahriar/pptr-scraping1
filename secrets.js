@@ -1,0 +1,4 @@
+const ADMIN_USERNAME = process.env.USERNAME
+const ADMIN_PASSWORD = process.env.PASSWORD
+
+export { ADMIN_USERNAME, ADMIN_PASSWORD}
