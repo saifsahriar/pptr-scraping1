@@ -1,5 +1,4 @@
 
-import { ADMIN_USERNAME, ADMIN_PASSWORD } from './secrets.js'
 import puppeteer from 'puppeteer-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
 import { executablePath } from 'puppeteer'
@@ -8,8 +7,11 @@ import fs from 'fs'
 import { log } from 'console'
 
 dotenv.config({
-    path: '/.env'
+    path: './.env'
 })
+const username = process.env.USERNAME
+const password = process.env.PASSWORD
+
 puppeteer.use(StealthPlugin())
 
 // const url = `https://bot.sannysoft.com/`                 // this was used for taking screenshot
@@ -22,16 +24,16 @@ const url = `https://quotes.toscrape.com/`
 
     // logging in 
     await page.click('.col-md-4 a')
-    await page.type('#username', ADMIN_USERNAME)
-    await page.type('#password', 'ADMIN_PASSWORD')
+    await page.type('#username', username)
+    await page.type('#password', password)
     await page.click('[type=submit]')
-    console.log('Login successful..')
+    console.log('Login successful')
 
     const content = await page.evaluate(() => Array.from(document.querySelectorAll('.quote'), (e) =>({
         quote: e.querySelector('.text').innerText.trim(),
         author: e.querySelector('.author').innerText.trim()
     })))
-    console.log('Scraping completed');
+    console.log('Scraping complete');
 
     fs.writeFile('files/quotes.json', JSON.stringify(content), (error) => {
         if(error) throw error
