@@ -1,4 +1,4 @@
-// THIS IS A NOOB WAY OF SCRAPING, 
+// THE BELOW CODE IS A NOOB WAY OF SCRAPING, 
 // [x] this code saves the before.png, where puppeteer is identified as bot
 
 // import puppeteer from 'puppeteer'
